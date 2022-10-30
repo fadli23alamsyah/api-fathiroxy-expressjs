@@ -35,6 +35,8 @@ finance.post('/', (req, res)=>{
     let title = req.body.title
     let total = req.body.total
     let addInfo = req.body.addInfo
+    console.log('Tes input', title)
+
 
     if(!title || !total){
         res.status(400).send({"message" : "Terdapat data kosonh"})
@@ -73,6 +75,7 @@ finance.post('/', (req, res)=>{
 // Hapus data
 finance.delete('/', (req, res) =>{
     let idFinance = req.body.idFinance
+    console.log('Tes input', idFinance)
 
     if(!idFinance){
         res.status(400).send({"message" : "Id Finance kosong"})
@@ -135,6 +138,9 @@ finance.put('/details', (req, res)=>{
     let title = req.body.title
     let total = req.body.total
     let addInfo = req.body.addInfo
+
+    console.log('Tes input', title)
+
 
     if(!idFinance || !title || !total){
         res.status(400).send({"message" : "Terdapat data kosong"})
