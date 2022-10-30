@@ -85,7 +85,7 @@ finance.delete('/', (req, res) =>{
             }else{
                 connect.query(`DELETE FROM tb_finance WHERE id_finance = ${idFinance}`, (error, result)=>{
                     // if(error) throw error
-    
+                    console.log('tes error query', error)
                     if(error){
                         res.status(500).send({"message" : error.code})
                     }else{
@@ -152,7 +152,7 @@ finance.put('/details', (req, res)=>{
                 }
                 connect.query(`UPDATE tb_finance SET ? WHERE id_finance = ${idFinance}`, [data], (error, result)=>{
                     // if(error) throw error
-    
+                    console.log('tes error query', error)
                     if(error){
                         res.status(500).send({"message" : error.code})
                     }else{
