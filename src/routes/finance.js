@@ -41,6 +41,9 @@ finance.post('/', (req, res)=>{
     }else{
         db.getConnection((error, connect)=>{
             // if(error) throw error
+            console.log('tes connection', error)
+            console.log('tes data title', title)
+
 
             if(error){
                 res.status(500).send({"message" : error.code})
@@ -53,6 +56,7 @@ finance.post('/', (req, res)=>{
                 }
                 connect.query(`INSERT INTO tb_finance SET ? `, [data], (error, result)=>{
                     // if(error) throw error
+                    console.log('tes error query', error)
     
                     if(error){
                         res.status(500).send({"message" : error.code})
