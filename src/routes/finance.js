@@ -32,21 +32,15 @@ finance.get('/', (req, res) =>{
 
 // Tambah data
 finance.post('/', (req, res)=>{
-    console.log('Coba terpanggil ji atau tidak')
     let title = req.body.title
     let total = req.body.total
     let addInfo = req.body.addInfo
-    console.log('Tes input', title)
-
 
     if(!title || !total){
         res.status(400).send({"message" : "Terdapat data kosonh"})
     }else{
         db.getConnection((error, connect)=>{
             // if(error) throw error
-            console.log('tes connection', error)
-            console.log('tes data title', title)
-
 
             if(error){
                 res.status(500).send({"message" : error.code})
@@ -59,8 +53,7 @@ finance.post('/', (req, res)=>{
                 }
                 connect.query(`INSERT INTO tb_finance SET ? `, [data], (error, result)=>{
                     // if(error) throw error
-                    console.log('tes error query', error)
-    
+
                     if(error){
                         res.status(500).send({"message" : error.code})
                     }else{
@@ -76,7 +69,6 @@ finance.post('/', (req, res)=>{
 // Hapus data
 finance.delete('/', (req, res) =>{
     let idFinance = req.body.idFinance
-    console.log('Tes input', idFinance)
 
     if(!idFinance){
         res.status(400).send({"message" : "Id Finance kosong"})
@@ -89,7 +81,7 @@ finance.delete('/', (req, res) =>{
             }else{
                 connect.query(`DELETE FROM tb_finance WHERE id_finance = ${idFinance}`, (error, result)=>{
                     // if(error) throw error
-                    console.log('tes error query', error)
+
                     if(error){
                         res.status(500).send({"message" : error.code})
                     }else{
@@ -140,9 +132,6 @@ finance.put('/details', (req, res)=>{
     let total = req.body.total
     let addInfo = req.body.addInfo
 
-    console.log('Tes input', title)
-
-
     if(!idFinance || !title || !total){
         res.status(400).send({"message" : "Terdapat data kosong"})
     }else{
@@ -159,7 +148,7 @@ finance.put('/details', (req, res)=>{
                 }
                 connect.query(`UPDATE tb_finance SET ? WHERE id_finance = ${idFinance}`, [data], (error, result)=>{
                     // if(error) throw error
-                    console.log('tes error query', error)
+
                     if(error){
                         res.status(500).send({"message" : error.code})
                     }else{
