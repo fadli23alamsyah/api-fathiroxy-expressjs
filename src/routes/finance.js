@@ -32,6 +32,7 @@ finance.get('/', (req, res) =>{
 
 // Tambah data
 finance.post('/', (req, res)=>{
+    console.log('Coba terpanggil ji atau tidak')
     let title = req.body.title
     let total = req.body.total
     let addInfo = req.body.addInfo
